@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns="urn:example:student-profile:1"
+           targetNamespace="urn:example:student-profile:1"
+           elementFormDefault="qualified">
+
+  <xs:simpleType name="Email">
+    <xs:restriction base="xs:string"><xs:pattern value="[^@\s]+@[^@\s]+\.[^@\s]+"/></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="GPA">
+    <xs:restriction base="xs:decimal"><xs:minInclusive value="0"/><xs:maxInclusive value="5"/></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="Level">
+    <xs:restriction base="xs:integer"><xs:minInclusive value="100"/><xs:maxInclusive value="600"/></xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="NonEmpty">
+    <xs:restriction base="xs:string"><xs:minLength value="1"/></xs:restriction>
+  </xs:simpleType>
+
+  <xs:element name="StudentProfile">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="StudentId" type="NonEmpty"/>
+        <xs:element name="Name">
+          <xs:complexType><xs:sequence>
+            <xs:element name="First" type="NonEmpty"/>
+            <xs:element name="Last" type="NonEmpty"/>
+          </xs:sequence></xs:complexType>
+        </xs:element>
+        <xs:element name="DateOfBirth" type="xs:date"/>
+        <xs:element name="Email" type="Email"/>
+        <xs:element name="Program" type="NonEmpty"/>
+        <xs:element name="Level" type="Level"/>
+        <xs:element name="GPA" type="GPA"/>
+        <xs:element name="Courses" minOccurs="0">
+          <xs:complexType><xs:sequence>
+            <xs:element name="Course" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:attribute name="code" type="NonEmpty" use="required"/>
+                <xs:attribute name="credits" type="xs:positiveInteger" use="required"/>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence></xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
