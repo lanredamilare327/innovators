@@ -1,0 +1,19 @@
+body{font-family:system-ui,sans-serif;max-width:720px;margin:0 auto;padding:16px;line-height:1.4}
+h1{font-size:1.3rem} label{display:block;margin:8px 0 2px;font-size:.85rem;color:#555}
+input,textarea{width:100%;box-sizing:border-box;padding:8px;font:inherit;border:1px solid #bbb;border-radius:6px}
+textarea{font-family:monospace;font-size:.8rem;min-height:200px}
+button{padding:9px 14px;margin:10px 6px 0 0;border:0;border-radius:6px;background:#2a5bd7;color:#fff;font:inherit}
+button.alt{background:#555}
+.err{color:#b00020}.warn{color:#9a6700}.ok{color:#127a2b}
+
+.second-app{
+  border:none;
+  background-color: purple;
+  padding:9px 10px ;
+  cursor:pointer;
+}
+
+.second-app a{
+color: white;
+text-decoration: none;
+}
